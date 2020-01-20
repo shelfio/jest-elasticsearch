@@ -1,4 +1,5 @@
 lib/
 node_modules/
+coverage/
 renovate.json
 tsconfig.types.json
