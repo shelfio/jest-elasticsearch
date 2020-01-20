@@ -7,8 +7,8 @@
     "jest environment",
     "jest preset",
     "elasticsearch",
-    "elasticsearch-local",
-    "elasticsearch local"
+    "elasticsearch local",
+    "elasticsearch-local"
   ],
   "repository": "shelfio/jest-elasticsearch",
   "license": "MIT",
@@ -20,12 +20,14 @@
   "jest": {
     "preset": "./jest-preset.js"
   },
-  "engines": {
-    "node": ">=12"
-  },
   "scripts": {
-    "lint": "eslint . --fix --ext .js,.json,.ts --quiet",
-    "test": "jest"
+    "build": "rm -rf lib/ && yarn build:types && babel src --out-dir lib --ignore '**/*.test.ts,**/*.mock.ts' --extensions '.ts'",
+    "build:types": "tsc -p tsconfig.types.json",
+    "coverage": "jest --coverage",
+    "prepack": "npm run build",
+    "test": "jest src",
+    "type-check": "tsc --noEmit",
+    "type-check:watch": "npm run type-check -- --watch"
   },
   "husky": {
     "hooks": {
@@ -45,5 +47,16 @@
   },
   "publishConfig": {
     "access": "public"
+  },
+  "dependencies": {
+    "@elastic/elasticsearch": "7.5.0"
+  },
+  "devDependencies": {
+    "@shelf/elasticsearch-local": "0.2.0",
+    "@shelf/indexing-es": "7.6.8",
+    "@types/elasticsearch": "5.0.36"
+  },
+  "engines": {
+    "node": ">=12"
   }
 }

@@ -1,0 +1,12 @@
+{
+  "extends": "./tsconfig",
+  "exclude": ["node_modules", "src/**/*.test.ts"],
+  "include": ["src"],
+  "compilerOptions": {
+    "allowJs": false,
+    "declaration": true,
+    "declarationDir": "lib",
+    "emitDeclarationOnly": true,
+    "isolatedModules": false
+  }
+}
