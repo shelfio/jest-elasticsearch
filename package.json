@@ -47,7 +47,8 @@
   },
   "dependencies": {
     "@elastic/elasticsearch": "7.5.0",
-    "@shelf/quotation-marks-regex": "0.1.0"
+    "@shelf/quotation-marks-regex": "0.1.0",
+    "cwd": "0.10.0"
   },
   "devDependencies": {
     "@shelf/elasticsearch-local": "0.2.0",

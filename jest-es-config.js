@@ -1,13 +1,8 @@
 const documentsMapping = require('./documents-mapping');
 
-module.exports = function generateMapping(
-  mappingSchema,
-  indexName,
-  aliasName,
-  elasticSearchVersion
-) {
+module.exports = function generateMapping(mapping, indexName, aliasName, esVersion) {
   return {
-    esVersion: elasticSearchVersion || '6.8.2',
+    esVersion: esVersion || '6.8.2',
     clusterName: 'docs',
     nodeName: 'docs',
     port: 9200,
@@ -22,7 +17,7 @@ module.exports = function generateMapping(
           aliases: {
             [aliasName || 'some-doc-id']: {}
           },
-          mappings: mappingSchema || documentsMapping
+          mappings: mapping || documentsMapping
         }
       }
     ]
