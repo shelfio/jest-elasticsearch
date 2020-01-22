@@ -1,6 +1,6 @@
 const documentsMapping = require('./documents-mapping');
 
-module.exports = function generateMapping(mapping, indexName, aliasName, esVersion) {
+module.exports = function generateMapping({mapping, indexName, aliasName, esVersion}) {
   return {
     esVersion: esVersion || '6.8.2',
     clusterName: 'docs',
