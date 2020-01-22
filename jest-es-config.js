@@ -1,6 +1,6 @@
-const documentsMapping = require('./documents-mapping');
+const documentsMapping = require('./index-mapping');
 
-module.exports = function generateMapping({mapping, indexName, aliasName, esVersion}) {
+module.exports = function getClusterSetting({mapping, indexName, aliasName, esVersion}) {
   return {
     esVersion: esVersion || '6.8.2',
     clusterName: 'docs',
@@ -8,14 +8,14 @@ module.exports = function generateMapping({mapping, indexName, aliasName, esVers
     port: 9200,
     indexes: [
       {
-        name: indexName || 'documents',
+        name: indexName,
         body: {
           settings: {
             number_of_shards: '1',
             number_of_replicas: '1'
           },
           aliases: {
-            [aliasName || 'some-doc-id']: {}
+            [aliasName]: {}
           },
           mappings: mapping || documentsMapping
         }
