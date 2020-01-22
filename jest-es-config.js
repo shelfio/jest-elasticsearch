@@ -1,23 +1,23 @@
 const documentsMapping = require('./index-mapping');
 
-module.exports = function getClusterSetting({mapping, indexName, aliasName, esVersion}) {
+module.exports = function getClusterSetting() {
   return {
-    esVersion: esVersion || '6.8.2',
+    esVersion: '7.5.0',
     clusterName: 'docs',
     nodeName: 'docs',
     port: 9200,
     indexes: [
       {
-        name: indexName,
+        name: 'some-index',
         body: {
           settings: {
             number_of_shards: '1',
             number_of_replicas: '1'
           },
           aliases: {
-            [aliasName]: {}
+            'some-alias': {}
           },
-          mappings: mapping || documentsMapping
+          mappings: documentsMapping
         }
       }
     ]

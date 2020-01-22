@@ -1,13 +1,11 @@
 {
-  "documents": {
-    "dynamic": "false",
-    "properties": {
-      "id": {
-        "type": "keyword"
-      },
-      "name": {
-        "type": "keyword"
-      }
+  "dynamic": "false",
+  "properties": {
+    "id": {
+      "type": "keyword"
+    },
+    "name": {
+      "type": "keyword"
     }
   }
 }
