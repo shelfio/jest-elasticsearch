@@ -48,11 +48,11 @@
     "preset": "./jest-preset.js"
   },
   "dependencies": {
-    "@elastic/elasticsearch": "7.5.0",
     "@shelf/elasticsearch-local": "0.2.0",
     "cwd": "0.10.0"
   },
   "devDependencies": {
+    "@elastic/elasticsearch": "7.5.0",
     "@shelf/eslint-config": "0.14.0",
     "eslint": "6.8.0",
     "husky": "4.0.10",
