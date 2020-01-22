@@ -18,9 +18,11 @@
     "url": "shelf.io"
   },
   "files": [
-    "lib"
+    "jest-es-config.js",
+    "jest-preset.js",
+    "setup.js",
+    "teardown.js"
   ],
-  "main": "lib",
   "scripts": {
     "coverage": "jest --coverage",
     "lint": "eslint . --ext .js,.json --fix",
