@@ -25,7 +25,7 @@
     "coverage": "jest --coverage",
     "lint": "eslint . --ext .js,.json --fix",
     "lint:ci": "eslint . --ext .js,.json --quiet",
-    "test": "jest ."
+    "test": "jest src"
   },
   "husky": {
     "hooks": {
@@ -33,12 +33,12 @@
     }
   },
   "lint-staged": {
-    "*.{html,json,md,yml}": [
-      "prettier --write",
-      "git add"
-    ],
     "*.js": [
       "eslint --fix",
+      "git add"
+    ],
+    "*.{html,json,md,yml}": [
+      "prettier --write",
       "git add"
     ]
   },
@@ -46,7 +46,8 @@
     "preset": "./jest-preset.js"
   },
   "dependencies": {
-    "@elastic/elasticsearch": "7.5.0"
+    "@elastic/elasticsearch": "7.5.0",
+    "@shelf/quotation-marks-regex": "0.1.0"
   },
   "devDependencies": {
     "@shelf/elasticsearch-local": "0.2.0",
