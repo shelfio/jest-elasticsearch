@@ -1,6 +1,6 @@
 const {search} = require('./elasticsearch');
 
-module.exports = async function getWikisByTerm({startFrom = 0}) {
+module.exports = async function getWikisByTerm({index, startFrom = 0}) {
   const body = {
     _source: {
       includes: ['_id', 'name']
@@ -14,7 +14,7 @@ module.exports = async function getWikisByTerm({startFrom = 0}) {
     body: {
       hits: {hits, total}
     }
-  } = await search({index: 'some-doc-id', body});
+  } = await search({index: index, body});
 
   return {items: hits, totalCount: total};
 };

@@ -9,7 +9,7 @@ describe('getWikisByTerm', () => {
 
   it('should return wikis by term', async () => {
     const wikis = await getWikisByTerm({
-      index: 'some-doc-id',
+      index: 'documents',
       _id: 'some-doc-id'
     });
 
@@ -26,7 +26,10 @@ describe('getWikisByTerm', () => {
           _type: 'documents'
         }
       ],
-      totalCount: 1
+      totalCount: {
+        relation: 'eq',
+        value: 1
+      }
     });
   });
 });
