@@ -1,5 +1,4 @@
-const {refreshAllIndexes} = require('./elasticsearch');
-const {getClient} = require('./elasticsearch');
+const {refreshAllIndexes, getClient} = require('./elasticsearch');
 
 module.exports = async function insertDocuments(document) {
   const body = [
