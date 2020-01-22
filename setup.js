@@ -4,14 +4,8 @@ const {start} = require('@shelf/elasticsearch-local');
 const getClusterSetting = require('./jest-es-config');
 
 module.exports = async function startES() {
-  /** 'config' must be {
-    mapping: {} (as in the index-mapping.json),
-    indexName: str,
-    aliasName: str,
-    esVersion: x.x.x
-  } */
+  const userConfig = require(resolve(cwd(), 'jest-es-config.js'));
+  const esConfig = typeof userConfig === 'object' ? userConfig : getClusterSetting();
 
-  const config = require(resolve(cwd(), 'jest-es-config.js'));
-
-  await start(getClusterSetting(config));
+  await start(esConfig);
 };
