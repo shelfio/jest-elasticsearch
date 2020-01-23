@@ -19,7 +19,7 @@ describe('getDocuments', () => {
           _id: 'some-doc-id-1',
           _index: 'documents',
           _routing: 'some-doc-id-1',
-          _score: 1.3260206,
+          _score: expect(Number),
           _source: {
             id: 'some-doc-id-1',
             name: 'some-name-1'
