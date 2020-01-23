@@ -7,7 +7,7 @@ describe('getDocuments', () => {
     await insertDocuments(documents);
   });
 
-  it('should return documents after inserting', async () => {
+  it('should return documents by id after inserting', async () => {
     const docs = await getDocuments({
       index: 'documents',
       _id: 'some-doc-id'
