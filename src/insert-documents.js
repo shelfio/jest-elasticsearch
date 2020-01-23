@@ -14,7 +14,7 @@ module.exports = async function insertDocuments(document) {
   await refreshAllIndexes();
 };
 
-async function bulk(body, {index, skipSource} = {}) {
+async function bulk(body, {index} = {}) {
   const client = getClient();
   const params = {
     type: 'documents',
@@ -23,10 +23,6 @@ async function bulk(body, {index, skipSource} = {}) {
 
   if (index) {
     params.index = index;
-  }
-
-  if (skipSource) {
-    params._source = [];
   }
 
   const {body: response} = await client.bulk(params);
