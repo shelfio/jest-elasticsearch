@@ -1,14 +1,14 @@
 const documents = require('./documents.mock');
-const getWikisByTerm = require('./search-by-term');
+const getDocuments = require('./search-by-term');
 const insertDocuments = require('./insert-documents');
 
-describe('getWikisByTerm', () => {
+describe('getDocuments', () => {
   beforeAll(async () => {
     await insertDocuments(documents);
   });
 
   it('should return wikis by term', async () => {
-    const wikis = await getWikisByTerm({
+    const wikis = await getDocuments({
       index: 'documents',
       _id: 'some-doc-id'
     });
