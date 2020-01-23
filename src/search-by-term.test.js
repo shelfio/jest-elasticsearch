@@ -7,7 +7,7 @@ describe('getDocuments', () => {
     await insertDocuments(documents);
   });
 
-  it('should return wikis by term', async () => {
+  it('should return documents after inserting', async () => {
     const wikis = await getDocuments({
       index: 'documents',
       _id: 'some-doc-id'
