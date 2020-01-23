@@ -1,0 +1,69 @@
+{
+  "name": "jest-elasticsearch",
+  "version": "0.0.1",
+  "description": "Run your tests using jest & elasticsearch-local",
+  "keywords": [
+    "jest",
+    "jest environment",
+    "jest preset",
+    "elasticsearch",
+    "elasticsearch local",
+    "elasticsearch-local"
+  ],
+  "repository": "shelfio/jest-elasticsearch",
+  "license": "MIT",
+  "author": {
+    "name": "Andrii Petlovanyi",
+    "email": "andrii.petlovanyi@shelf.io",
+    "url": "shelf.io"
+  },
+  "files": [
+    "jest-es-config.js",
+    "jest-preset.js",
+    "setup.js",
+    "teardown.js"
+  ],
+  "scripts": {
+    "coverage": "jest --coverage",
+    "lint": "eslint . --ext .js,.json --fix",
+    "lint:ci": "eslint . --ext .js,.json --quiet",
+    "test": "jest src"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
+  },
+  "lint-staged": {
+    "*.js": [
+      "eslint --fix",
+      "git add"
+    ],
+    "*.{html,json,md,yml}": [
+      "prettier --write",
+      "git add"
+    ]
+  },
+  "jest": {
+    "preset": "./jest-preset.js"
+  },
+  "dependencies": {
+    "@shelf/elasticsearch-local": "0.2.0",
+    "cwd": "0.10.0"
+  },
+  "devDependencies": {
+    "@elastic/elasticsearch": "7.5.0",
+    "@shelf/eslint-config": "0.14.0",
+    "eslint": "6.8.0",
+    "husky": "4.0.10",
+    "jest": "24.9.0",
+    "lint-staged": "10.0.0",
+    "prettier": "1.19.1"
+  },
+  "engines": {
+    "node": ">=12"
+  },
+  "publishConfig": {
+    "access": "public"
+  }
+}
