@@ -23,5 +23,4 @@ jobs:
       - checkout
       - install_deps
       - run: yarn test
-      - run: yarn type-check
       - run: yarn lint:ci
