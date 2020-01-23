@@ -1,5 +1,5 @@
 {
-  "name": "jest-elasticsearch",
+  "name": "@shelf/jest-elasticsearch",
   "version": "0.0.1",
   "description": "Run your tests using jest & elasticsearch-local",
   "keywords": [
