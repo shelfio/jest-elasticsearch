@@ -10,18 +10,19 @@ describe('getDocuments', () => {
   it('should return documents by id after inserting', async () => {
     const docs = await getDocuments({
       index: 'documents',
-      _id: 'some-doc-id'
+      id: '1'
     });
 
     expect(docs).toEqual({
       items: [
         {
-          _id: 'some-doc-id',
+          _id: 'some-doc-id-1',
           _index: 'documents',
-          _routing: 'some-doc-id',
-          _score: 1,
+          _routing: 'some-doc-id-1',
+          _score: 1.3260206,
           _source: {
-            name: 'some-name'
+            id: 'some-doc-id-1',
+            name: 'some-name-1'
           },
           _type: 'documents'
         }
