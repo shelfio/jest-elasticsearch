@@ -8,12 +8,12 @@ describe('getDocuments', () => {
   });
 
   it('should return documents after inserting', async () => {
-    const wikis = await getDocuments({
+    const docs = await getDocuments({
       index: 'documents',
       _id: 'some-doc-id'
     });
 
-    expect(wikis).toEqual({
+    expect(docs).toEqual({
       items: [
         {
           _id: 'some-doc-id',
