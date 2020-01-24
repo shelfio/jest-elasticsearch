@@ -18,6 +18,7 @@
     "url": "shelf.io"
   },
   "files": [
+    "index-mapping.json",
     "jest-es-config.js",
     "jest-preset.js",
     "setup.js",
