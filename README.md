@@ -24,7 +24,7 @@ If you have a custom `jest.config.js` make sure you remove `testEnvironment` pro
 ```js
 module.exports = () => {
   return {
-    esVersion: '7.5.0',        <-- must be < 7.5.0
+    esVersion: '7.5.0',         // <==  must be < 7.5.0
     clusterName: 'your-cluster-name',
     nodeName: 'your-node-name',
     port: 9200,
