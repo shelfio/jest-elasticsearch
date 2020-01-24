@@ -22,36 +22,38 @@ If you have a custom `jest.config.js` make sure you remove `testEnvironment` pro
 ### 2. Create `jest-es-config.js`
 
 ```js
-module.exports = {
-  esVersion: '7.5.0',
-  clusterName: 'your-cluster-name',
-  nodeName: 'your-node-name',
-  port: 9200,
-  indexes: [
-    {
-      name: 'your-index-name',
-      body: {
-        settings: {
-          number_of_shards: '1',
-          number_of_replicas: '1'
-        },
-        aliases: {
-          'your-alias': {}
-        },
-        mappings: {
-          dynamic: false,
-          properties: {
-            //here you should paste your mapping
-            //Example:
-            id: {
-              type: "keyword"
+module.exports = () => {
+  return {
+    esVersion: '7.5.0',         // <==  must be < 7.5.0
+    clusterName: 'your-cluster-name',
+    nodeName: 'your-node-name',
+    port: 9200,
+    indexes: [
+      {
+        name: 'your-index-name',
+        body: {
+          settings: {
+            number_of_shards: '1',
+            number_of_replicas: '1'
+          },
+          aliases: {
+            'your-alias': {}
+          },
+          mappings: {
+            dynamic: false,
+            properties: {
+              //here you should paste your mapping
+              //Example:
+              id: {
+                type: "keyword"
+              }
             }
           }
         }
       }
-    }
-  ]
-};
+    ]
+  }
+}
 ```
 
 
