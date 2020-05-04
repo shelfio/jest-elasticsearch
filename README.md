@@ -69,6 +69,17 @@ it();
 - [jest-dynamodb](https://github.com/shelfio/jest-dynamodb)
 - [jest-mongodb](https://github.com/shelfio/jest-mongodb)
 
+````
+
+## Publish
+
+```sh
+$ git checkout master
+$ yarn version
+$ yarn publish
+$ git push origin master
+````
+
 ## License
 
 MIT © [Shelf](https://shelf.io)
