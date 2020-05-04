@@ -26,7 +26,6 @@ function generateTargetBody(documents) {
 async function bulk(body, {index} = {}) {
   const client = getClient();
   const params = {
-    type: 'documents',
     body
   };
 

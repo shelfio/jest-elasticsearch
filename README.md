@@ -1,4 +1,5 @@
 # jest-elasticsearch
+
 > Jest preset for running tests with local ElasticSearch
 
 ## Usage
@@ -24,7 +25,8 @@ If you have a custom `jest.config.js` make sure you remove `testEnvironment` pro
 ```js
 module.exports = () => {
   return {
-    esVersion: '7.5.0',         // <==  must be < 7.5.0
+    esVersion: '7.6.0', // ! must be exact version. Ref: https://github.com/elastic/elasticsearch-js .
+    // don't be shy to fork our code and update deps to correct.
     clusterName: 'your-cluster-name',
     nodeName: 'your-node-name',
     port: 9200,
@@ -45,26 +47,22 @@ module.exports = () => {
               //here you should paste your mapping
               //Example:
               id: {
-                type: "keyword"
+                type: 'keyword'
               }
             }
           }
         }
       }
     ]
-  }
-}
+  };
+};
 ```
-
-
 
 ### 4. PROFIT! Write tests
 
 ```js
-it()
-
+it();
 ```
-
 
 ## See Also
 
