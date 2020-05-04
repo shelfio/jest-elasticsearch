@@ -24,7 +24,7 @@ describe('getDocuments', () => {
             id: 'some-doc-id-1',
             name: 'some-name-1'
           },
-          _type: 'documents'
+          _type: '_doc'
         }
       ],
       totalCount: {
