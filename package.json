@@ -54,7 +54,7 @@
   },
   "devDependencies": {
     "@elastic/elasticsearch": "7.6.0",
-    "@shelf/eslint-config": "0.16.0",
+    "@shelf/eslint-config": "0.17.0",
     "@shelf/prettier-config": "0.0.7",
     "eslint": "7.3.0",
     "husky": "4.2.5",
