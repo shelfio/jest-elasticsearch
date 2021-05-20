@@ -2,7 +2,7 @@ const documentsMapping = require('./index-mapping');
 
 module.exports = function getClusterSetting() {
   return {
-    esVersion: '7.6.0',
+    esVersion: '7.12.1',
     clusterName: 'docs',
     nodeName: 'docs',
     port: 9200,
