@@ -50,7 +50,7 @@
     "preset": "./jest-preset.js"
   },
   "dependencies": {
-    "@shelf/elasticsearch-local": "2.2.0",
+    "@shelf/elasticsearch-local": "2.3.0",
     "cwd": "0.10.0"
   },
   "devDependencies": {
