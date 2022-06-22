@@ -3,6 +3,11 @@ version: 2.1
 orbs:
   node: circleci/node@5.0.2
 
+parameters:
+  node_version:
+    type: string
+    default: '16.15.0'
+
 commands:
   install_deps:
     steps:
