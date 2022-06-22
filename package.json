@@ -44,7 +44,7 @@
     "preset": "./jest-preset.js"
   },
   "dependencies": {
-    "@shelf/elasticsearch-local": "2.3.0",
+    "@shelf/elasticsearch-local": "3.0.0",
     "cwd": "0.10.0"
   },
   "devDependencies": {
@@ -58,7 +58,7 @@
     "prettier": "2.3.0"
   },
   "engines": {
-    "node": ">=14"
+    "node": ">=16"
   },
   "publishConfig": {
     "access": "public"

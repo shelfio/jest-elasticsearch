@@ -23,8 +23,7 @@ describe('getDocuments', () => {
           _source: {
             id: 'some-doc-id-1',
             name: 'some-name-1'
-          },
-          _type: '_doc'
+          }
         }
       ],
       totalCount: {
