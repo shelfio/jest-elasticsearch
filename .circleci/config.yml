@@ -28,5 +28,5 @@ jobs:
     steps:
       - checkout
       - install_deps
-      - run: yarn test
+      - run: DEBUG=elasticsearch-local yarn test
       - run: yarn lint:ci
