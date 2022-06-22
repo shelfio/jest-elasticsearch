@@ -13,6 +13,7 @@ commands:
           use-strict-cache: true
           steps:
             - run: yarn install --pure-lockfile --no-progress
+      - run: sudo apt-get -q update && sudo apt-get -y install openjdk-17-jdk
 
 jobs:
   build:
