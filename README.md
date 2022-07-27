@@ -123,6 +123,13 @@ $ yarn version
 $ yarn publish
 $ git push origin master --tags
 ```
+### Create and publish a GitHub release with your tag
+1. Go to repository
+2. Select `Releases`
+3. Select `Draft a new release`
+4. Choose a tag, fill title and describe changes
+5. Press a `Publish release`
+
 
 ## License
 
