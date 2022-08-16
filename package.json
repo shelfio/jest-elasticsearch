@@ -57,7 +57,7 @@
     "@babel/core": "7.18.9",
     "@elastic/elasticsearch": "7.15.0",
     "@shelf/babel-config": "1.2.0",
-    "@shelf/eslint-config": "0.19.0",
+    "@shelf/eslint-config": "0.29.0",
     "@shelf/prettier-config": "0.0.7",
     "@shelf/tsconfig": "0.0.8",
     "@types/cwd": "^0.10.0",
