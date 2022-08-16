@@ -1,6 +1,19 @@
-const {search} = require('./elasticsearch');
+import {search} from './elasticsearch';
 
-module.exports = async function getDocuments({index, id, startFrom = 0}) {
+type GetDocumentsResponse = {
+  items: Array<{[key: string]: string}>;
+  totalCount: number;
+};
+
+export default async function getDocuments({
+  index,
+  id,
+  startFrom = 0
+}: {
+  index: string;
+  id: string;
+  startFrom: number;
+}): Promise<GetDocumentsResponse> {
   const body = {
     _source: {
       includes: ['_id', 'name', 'id']
@@ -21,4 +34,4 @@ module.exports = async function getDocuments({index, id, startFrom = 0}) {
   } = await search({index, body});
 
   return {items: hits, totalCount: total};
-};
+}

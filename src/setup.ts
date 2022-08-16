@@ -1,6 +1,7 @@
-const {resolve} = require('path');
+import {resolve} from 'path';
+import {start} from '@shelf/elasticsearch-local';
+
 const cwd = require('cwd');
-const {start} = require('@shelf/elasticsearch-local');
 
 module.exports = async function startES() {
   const config = require(resolve(cwd(), 'jest-es-config.js'))();

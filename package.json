@@ -1,6 +1,6 @@
 {
   "name": "@shelf/jest-elasticsearch",
-  "version": "4.0.0",
+  "version": "4.1.0",
   "description": "Run your tests using jest & elasticsearch-local",
   "keywords": [
     "jest",
@@ -20,24 +20,29 @@
   "files": [
     "jest-es-config.js",
     "jest-preset.js",
-    "setup.js",
-    "teardown.js"
+    "lib/"
   ],
   "scripts": {
+    "build": "rm -rf lib/ && yarn build:types && babel src --out-dir lib --ignore '**/*.test.ts' --extensions '.ts'",
+    "build:types": "tsc --emitDeclarationOnly --declaration --isolatedModules false --declarationDir lib",
     "coverage": "jest --coverage",
-    "lint": "eslint . --ext .js,.json --fix",
-    "lint:ci": "eslint . --ext .js,.json --quiet",
-    "test": "jest src"
+    "lint": "eslint . --ext .js,.ts,.json --fix",
+    "lint:ci": "eslint . --ext .js,.ts,.json",
+    "prepack": "yarn build",
+    "test": "export ENVIRONMENT=local && jest tests",
+    "type-check": "tsc --noEmit",
+    "type-check:watch": "npm run type-check -- --watch"
   },
   "lint-staged": {
-    "*.js": [
-      "eslint --fix",
-      "git add"
+    "*.{ts,js,}": [
+      "eslint --fix"
     ],
     "*.{html,json,md,yml}": [
-      "prettier --write",
-      "git add"
+      "prettier --write"
     ]
+  },
+  "babel": {
+    "extends": "@shelf/babel-config/backend"
   },
   "prettier": "@shelf/prettier-config",
   "jest": {
@@ -48,14 +53,22 @@
     "cwd": "0.10.0"
   },
   "devDependencies": {
+    "@babel/cli": "7.18.9",
+    "@babel/core": "7.18.9",
     "@elastic/elasticsearch": "7.15.0",
+    "@shelf/babel-config": "1.2.0",
     "@shelf/eslint-config": "0.19.0",
     "@shelf/prettier-config": "0.0.7",
+    "@shelf/tsconfig": "0.0.8",
+    "@types/cwd": "^0.10.0",
+    "@types/jest": "28.1.3",
+    "@types/node": "16",
     "eslint": "7.26.0",
     "husky": "7.0.4",
     "jest": "28.1.3",
     "lint-staged": "12.1.2",
-    "prettier": "2.3.0"
+    "prettier": "2.3.0",
+    "typescript": "4.7.4"
   },
   "engines": {
     "node": ">=16"

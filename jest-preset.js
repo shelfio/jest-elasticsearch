@@ -1,6 +1,3 @@
-const {resolve} = require('path');
+const preset = require('./lib');
 
-module.exports = {
-  globalSetup: resolve(__dirname, './setup.js'),
-  globalTeardown: resolve(__dirname, './teardown.js')
-};
+module.exports = preset;

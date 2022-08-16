@@ -1,7 +1,7 @@
 .idea/
 coverage/
 node_modules/
-dist/
+lib/
 yarn.lock
 *.log
 .DS_Store
