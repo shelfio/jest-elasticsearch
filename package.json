@@ -35,12 +35,10 @@
   },
   "lint-staged": {
     "*.{ts,js,}": [
-      "eslint --fix",
-      "git add"
+      "eslint --fix"
     ],
     "*.{html,json,md,yml}": [
-      "prettier --write",
-      "git add"
+      "prettier --write"
     ]
   },
   "babel": {
