@@ -1,10 +1,10 @@
-const {refreshAllIndexes, getClient} = require('./elasticsearch');
+import {getClient, refreshAllIndexes} from './elasticsearch';
 
-module.exports = async function insertDocuments(documents) {
+export default async function insertDocuments(documents) {
   const body = generateTargetBody(documents);
   await bulk(body, {index: 'documents'});
   await refreshAllIndexes();
-};
+}
 
 function generateTargetBody(documents) {
   const targets = [];
@@ -23,9 +23,9 @@ function generateTargetBody(documents) {
   return targets;
 }
 
-async function bulk(body, {index} = {}) {
+async function bulk(body, {index}: {index?: string} = {}) {
   const client = getClient();
-  const params = {
+  const params: {body: any; index?: string} = {
     body
   };
 

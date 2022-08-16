@@ -1,20 +1,20 @@
-const {Client} = require('@elastic/elasticsearch');
+import {Client} from '@elastic/elasticsearch';
 
 let client;
 
-function search(options) {
+export function search(options) {
   const es = getClient();
 
   return es.search(options);
 }
 
-async function refreshAllIndexes() {
+export async function refreshAllIndexes() {
   const es = getClient();
 
   return es.indices.refresh({index: '_all'});
 }
 
-function getClient() {
+export function getClient() {
   if (!client) {
     if (!process.env.ES_URL) {
       throw new Error('Please provide ES_URL env var first');
@@ -25,5 +25,3 @@ function getClient() {
 
   return client;
 }
-
-module.exports = {search, refreshAllIndexes, getClient};

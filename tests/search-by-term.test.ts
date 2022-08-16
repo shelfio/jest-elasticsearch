@@ -1,6 +1,6 @@
-const documents = require('./documents.mock');
-const getDocuments = require('./search-by-term');
-const insertDocuments = require('./insert-documents');
+import documents from './mocks';
+import getDocuments from './search-by-term';
+import insertDocuments from './insert-helper';
 
 describe('getDocuments', () => {
   beforeAll(async () => {
