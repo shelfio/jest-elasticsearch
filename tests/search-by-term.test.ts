@@ -14,22 +14,22 @@ describe('getDocuments', () => {
     });
 
     expect(docs).toEqual({
-      items: [
-        {
-          _id: 'some-doc-id-1',
-          _index: 'documents',
-          _routing: 'some-doc-id-1',
-          _score: expect.any(Number),
-          _source: {
-            id: 'some-doc-id-1',
-            name: 'some-name-1'
+      _shards: {failed: 0, skipped: 0, successful: 1, total: 1},
+      hits: {
+        hits: [
+          {
+            _id: 'some-doc-id-1',
+            _index: 'documents',
+            _routing: 'some-doc-id-1',
+            _score: expect.any(Number),
+            _source: {id: 'some-doc-id-1', name: 'some-name-1'}
           }
-        }
-      ],
-      totalCount: {
-        relation: 'eq',
-        value: 1
-      }
+        ],
+        max_score: expect.any(Number),
+        total: {relation: 'eq', value: 1}
+      },
+      timed_out: false,
+      took: expect.any(Number)
     });
   });
 });
