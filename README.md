@@ -99,6 +99,7 @@ $ java -version
 ```
 Output for proper work
 ```shell
+$ java -version
 java version "18.0.2.1"
 Java(TM) SE Runtime Environment (build 18.0.2.1+1-1)
 Java HotSpot(TM) 64-Bit Server VM (build 18.0.2.1+1-1, mixed mode, sharing)
