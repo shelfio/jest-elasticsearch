@@ -1,8 +1,9 @@
+import {estypes as EsTypes} from '@elastic/elasticsearch';
 import {search} from './elasticsearch';
 
 type GetDocumentsResponse = {
-  items: Array<{[key: string]: string}>;
-  totalCount: number;
+  items: EsTypes.SearchHit[];
+  totalCount: EsTypes.SearchHitsMetadata['total'];
 };
 
 export default async function getDocuments({
@@ -12,7 +13,7 @@ export default async function getDocuments({
 }: {
   index: string;
   id: string;
-  startFrom: number;
+  startFrom?: number;
 }): Promise<GetDocumentsResponse> {
   const body = {
     _source: {
@@ -28,10 +29,8 @@ export default async function getDocuments({
   };
 
   const {
-    body: {
-      hits: {hits, total}
-    }
-  } = await search({index, body});
+    hits: {hits, total}
+  } = await search({index, ...body});
 
   return {items: hits, totalCount: total};
 }

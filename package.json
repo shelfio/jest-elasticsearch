@@ -49,13 +49,13 @@
     "preset": "./jest-preset.js"
   },
   "dependencies": {
-    "@shelf/elasticsearch-local": "3.0.0",
+    "@shelf/elasticsearch-local": "3.2.0",
     "cwd": "0.10.0"
   },
   "devDependencies": {
     "@babel/cli": "7.18.9",
     "@babel/core": "7.18.9",
-    "@elastic/elasticsearch": "7.15.0",
+    "@elastic/elasticsearch": "8.4.0",
     "@shelf/babel-config": "1.2.0",
     "@shelf/eslint-config": "0.19.0",
     "@shelf/prettier-config": "0.0.7",

@@ -25,7 +25,7 @@ If you have a custom `jest.config.js` make sure you remove `testEnvironment` pro
 ```js
 module.exports = () => {
   return {
-    esVersion: '7.6.0', // ! must be exact version. Ref: https://github.com/elastic/elasticsearch-js .
+    esVersion: '8.4.0', // ! must be exact version. Ref: https://github.com/elastic/elasticsearch-js .
     // don't be shy to fork our code and update deps to correct.
     clusterName: 'your-cluster-name',
     nodeName: 'your-node-name',
@@ -84,14 +84,14 @@ The main reason why this issue appears is that you have an incompatible java ver
 $ /usr/libexec/java_home -V
 ```
 
-2. If you see version 1.8.xxx
+2. If you see version 18.0.x
    Add this command to your bashrc, zshrc, etc
 ```shell
-$ /usr/libexec/java_home -v 1.8
+$ /usr/libexec/java_home -v 18
 ```
 
-3. If you see no versions or do not have a compatible version installed - Install version 1.8xxx
-https://www.java.com/en/download/
+3. If you see no versions or do not have a compatible version installed - Install version 18
+https://www.oracle.com/java/technologies/downloads/#java18
 
 4. Reload the console and check the java version with
 ```shell
@@ -100,12 +100,14 @@ $ java -version
 Output for proper work
 ```shell
 $ java -version
-java version "1.8.0_333"
-Java(TM) SE Runtime Environment (build 1.8.0_333-b02)
-Java HotSpot(TM) 64-Bit Server VM (build 25.333-b02, mixed mode)
+java version "18.0.2.1"
+Java(TM) SE Runtime Environment (build 18.0.2.1+1-1)
+Java HotSpot(TM) 64-Bit Server VM (build 18.0.2.1+1-1, mixed mode, sharing)
 ```
 
-5. Go to step 2 and set version 1.8xx as a default for the shell
+5. Go to step **2** and set version 18.xx as a default for the shell
+
+> Note: If you need to run elastic <= `v7.17.x` locally, then perform the steps above but for the java version 1.8.xxx
 
 
 </details>
