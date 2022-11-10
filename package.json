@@ -61,7 +61,7 @@
     "@shelf/prettier-config": "0.0.7",
     "@shelf/tsconfig": "0.0.8",
     "@types/cwd": "^0.10.0",
-    "@types/jest": "28.1.3",
+    "@types/jest": "28.1.8",
     "@types/node": "16",
     "eslint": "7.32.0",
     "husky": "7.0.4",
