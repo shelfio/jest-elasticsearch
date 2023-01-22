@@ -1,9 +1,9 @@
 # jest-elasticsearch
 
 > Jest preset for running tests with local ElasticSearch
-
+>
+[How to mock Elasticsearch with Jest?](https://medium.com/shelf-io-engineering/test-elasticsearch-with-jest-like-a-pro-42386713b899)
 ## Usage
-
 ### 0. Install
 
 ```
@@ -114,6 +114,7 @@ Java HotSpot(TM) 64-Bit Server VM (build 18.0.2.1+1-1, mixed mode, sharing)
 
 ## See Also
 
+- [elasticsearch-local](https://github.com/shelfio/elasticsearch-local)
 - [jest-dynamodb](https://github.com/shelfio/jest-dynamodb)
 - [jest-mongodb](https://github.com/shelfio/jest-mongodb)
 
