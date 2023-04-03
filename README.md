@@ -2,8 +2,10 @@
 
 > Jest preset for running tests with local ElasticSearch
 >
-[How to mock Elasticsearch with Jest?](https://medium.com/shelf-io-engineering/test-elasticsearch-with-jest-like-a-pro-42386713b899)
+> [How to mock Elasticsearch with Jest?](https://medium.com/shelf-io-engineering/test-elasticsearch-with-jest-like-a-pro-42386713b899)
+
 ## Usage
+
 ### 0. Install
 
 ```
@@ -64,6 +66,32 @@ module.exports = () => {
 it();
 ```
 
+## Monorepo Support
+
+By default the `jest-es-config.js` is read from `cwd` directory, but this might not be suitable for
+monorepos with nested [jest projects](https://jestjs.io/docs/configuration#projects-arraystring--projectconfig)
+with nested `jest.config.*` files nested in subdirectories.
+
+If your `jest-es-config.js` file is not located at `{cwd}/jest-es-config.js` or you are using
+nested `jest projects`, you can define the environment variable `JEST_ELASTICSEARCH_CONFIG` with
+the absolute path of the respective `jest-es-config.js` file.
+
+### Example Using `JEST_ELASTICSEARCH_CONFIG` in nested project
+
+```js
+// src/nested/project/jest.config.js
+const path = require('path');
+
+// Define path of project level config - extension not required as file will be imported
+// via `require(process.env.JEST_ELASTICSEARCH_CONFIG)`
+process.env.JEST_ELASTICSEARCH_CONFIG = path.resolve(__dirname, './jest-es-config');
+
+module.exports = {
+  preset: '@shelf/jest-elasticsearch'
+  displayName: 'nested-project',
+};
+```
+
 ## Troubleshooting
 
 <details>
@@ -75,29 +103,35 @@ java.lang.UnsupportedOperationException The Security Manager is deprecated and w
 at java.base/java.lang.System.setSecurityManager(System. java: 416)
 at ora.elasticsearch.bootstrap.Elasticsearch.main(Elasticsearch.iava:71
 ```
+
 The main reason why this issue appears is that you have an incompatible java version installed to run elastic locally.
 
 ### What to do?
 
 1. List current java versions
+
 ```shell
 $ /usr/libexec/java_home -V
 ```
 
 2. If you see version 18.0.x
    Add this command to your bashrc, zshrc, etc
+
 ```shell
 $ /usr/libexec/java_home -v 18
 ```
 
 3. If you see no versions or do not have a compatible version installed - Install version 18
-https://www.oracle.com/java/technologies/downloads/#java18
+   https://www.oracle.com/java/technologies/downloads/#java18
 
 4. Reload the console and check the java version with
+
 ```shell
 $ java -version
 ```
+
 Output for proper work
+
 ```shell
 $ java -version
 java version "18.0.2.1"
@@ -108,7 +142,6 @@ Java HotSpot(TM) 64-Bit Server VM (build 18.0.2.1+1-1, mixed mode, sharing)
 5. Go to step **2** and set version 18.xx as a default for the shell
 
 > Note: If you need to run elastic <= `v7.17.x` locally, then perform the steps above but for the java version 1.8.xxx
-
 
 </details>
 
@@ -126,13 +159,14 @@ $ yarn version
 $ yarn publish
 $ git push origin master --tags
 ```
+
 ### Create and publish a GitHub release with your tag
+
 1. Go to repository
 2. Select `Releases`
 3. Select `Draft a new release`
 4. Choose a tag, fill title and describe changes
 5. Press a `Publish release`
-
 
 ## License
 
