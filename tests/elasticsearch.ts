@@ -1,4 +1,5 @@
-import {Client, estypes as EsTypes} from '@elastic/elasticsearch';
+import {Client} from '@elastic/elasticsearch';
+import type {estypes as EsTypes} from '@elastic/elasticsearch';
 
 let client: undefined | Client;
 
@@ -8,7 +9,7 @@ export function search(options: EsTypes.SearchRequest): Promise<EsTypes.SearchRe
   return es.search(options);
 }
 
-export async function refreshAllIndexes(): Promise<EsTypes.IndicesRefreshResponse> {
+export function refreshAllIndexes(): Promise<EsTypes.IndicesRefreshResponse> {
   const es = getClient();
 
   return es.indices.refresh({index: '_all'});

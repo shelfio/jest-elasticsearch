@@ -1,4 +1,4 @@
-import {estypes as EsTypes} from '@elastic/elasticsearch';
+import type {estypes as EsTypes} from '@elastic/elasticsearch';
 import {search} from './elasticsearch';
 
 type GetDocumentsResponse = {
