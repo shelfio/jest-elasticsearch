@@ -54,7 +54,7 @@
   },
   "devDependencies": {
     "@babel/cli": "7.19.3",
-    "@babel/core": "7.22.5",
+    "@babel/core": "7.22.8",
     "@elastic/elasticsearch": "8.4.0",
     "@shelf/babel-config": "1.2.0",
     "@shelf/eslint-config": "2.29.0",
