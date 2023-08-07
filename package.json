@@ -53,8 +53,8 @@
     "cwd": "0.10.0"
   },
   "devDependencies": {
-    "@babel/cli": "7.22.9",
-    "@babel/core": "7.22.9",
+    "@babel/cli": "7.22.10",
+    "@babel/core": "7.22.10",
     "@elastic/elasticsearch": "8.4.0",
     "@shelf/babel-config": "1.2.0",
     "@shelf/eslint-config": "2.29.0",
