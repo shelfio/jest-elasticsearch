@@ -1,7 +1,8 @@
 {
   "extends": "@shelf/tsconfig/backend",
   "compilerOptions": {
-    "strict": true
+    "strict": true,
+    "outDir": "lib"
   },
   "exclude": ["node_modules"],
   "include": ["src"]
