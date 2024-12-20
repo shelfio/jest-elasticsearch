@@ -6,7 +6,7 @@ orbs:
 parameters:
   node_version:
     type: string
-    default: '18.18.2'
+    default: '20.12.0'
 
 commands:
   install_deps:
