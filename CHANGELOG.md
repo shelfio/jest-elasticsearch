@@ -1,5 +1,9 @@
 # Breaking Changes
 
+## 6.0.0
+
+- Switched `node` version `18`->`22`
+
 ## 5.0.0
 
 - Upgrade `@elastic/elasticsearch` to version 8.4.0
