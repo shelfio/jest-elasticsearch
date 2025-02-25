@@ -55,7 +55,7 @@
     "@elastic/elasticsearch": "8.4.0",
     "@shelf/eslint-config": "4.2.1",
     "@shelf/prettier-config": "0.0.7",
-    "@shelf/tsconfig": "0.0.8",
+    "@shelf/tsconfig": "0.1.0",
     "@types/cwd": "^0.10.0",
     "@types/jest": "28.1.8",
     "@types/node": "22",
