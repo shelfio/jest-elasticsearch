@@ -52,7 +52,7 @@
     "cwd": "0.10.0"
   },
   "devDependencies": {
-    "@elastic/elasticsearch": "8.4.0",
+    "@elastic/elasticsearch": "8.17.1",
     "@shelf/eslint-config": "4.2.1",
     "@shelf/prettier-config": "0.0.7",
     "@shelf/tsconfig": "0.0.8",
