@@ -16,5 +16,10 @@ export default [
       'packages/**/lib/**',
       'renovate.json'
     ]
+  },
+  {
+    rules: {
+      '@typescript-eslint/no-require-imports': 'off'
+    }
   }
 ];
