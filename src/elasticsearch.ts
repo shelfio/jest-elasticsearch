@@ -1,6 +1,6 @@
 import {execFileSync} from 'child_process';
 import {access, constants, readFileSync, writeFileSync} from 'fs';
-import {platform} from 'os';
+import {arch, platform} from 'os';
 import {promisify} from 'util';
 import cwd from 'cwd';
 import getDebug from 'debug';
@@ -29,7 +29,7 @@ type ElasticsearchIndex = {
   body: Record<string, unknown>;
 };
 
-let spawnedProcess: ExecaChildProcess;
+let spawnedProcess: ExecaChildProcess | undefined;
 
 export async function startElasticsearch(options: StartElasticsearchOptions): Promise<void> {
   const {
@@ -85,10 +85,20 @@ export async function startElasticsearch(options: StartElasticsearchOptions): Pr
     debug(data.toString());
   });
 
-  await waitForLocalhost({port});
-  debug('ES is running');
+  try {
+    await waitForLocalhost({port});
+    debug('ES is running');
 
-  await createIndices(esURL, indexes);
+    await createIndices(esURL, indexes);
+  } catch (error) {
+    try {
+      killProcess();
+    } catch (cleanupError) {
+      debug('Could not stop ES after initialization failed', cleanupError);
+    }
+
+    throw error;
+  }
 
   process.env.ES_URL = esURL;
   process.env.ES_VERSION = esVersion;
@@ -124,10 +134,12 @@ async function createIndices(esURL: string, indexes: ElasticsearchIndex[]): Prom
 }
 
 export function stopElasticsearch(): void {
-  cleanupIndices();
-  killProcess();
-
-  debug('ES has been stopped');
+  try {
+    cleanupIndices();
+  } finally {
+    killProcess();
+    debug('ES has been stopped');
+  }
 }
 
 function cleanupIndices(): void {
@@ -148,8 +160,15 @@ function cleanupIndices(): void {
 }
 
 function killProcess(): void {
+  if (!spawnedProcess) {
+    return;
+  }
+
+  const processToKill = spawnedProcess;
+  spawnedProcess = undefined;
+
   try {
-    spawnedProcess.kill('SIGTERM', {
+    processToKill.kill('SIGTERM', {
       forceKillAfterTimeout: 2000
     });
   } catch {
@@ -198,15 +217,31 @@ function getVersionFromString(version: string): number {
 }
 
 function getVersionSuffix(): string {
+  const architecture = getArchitectureSuffix();
+
   switch (platform()) {
     case 'darwin': {
-      return '-darwin-x86_64';
+      return `-darwin-${architecture}`;
     }
-    case 'win32': {
-      throw new Error('Unsupported OS, try run on OS X or Linux');
+    case 'linux': {
+      return `-linux-${architecture}`;
     }
     default: {
-      return '-linux-x86_64';
+      throw new Error('Unsupported OS, use macOS or Linux');
+    }
+  }
+}
+
+function getArchitectureSuffix(): string {
+  switch (arch()) {
+    case 'arm64': {
+      return 'aarch64';
+    }
+    case 'x64': {
+      return 'x86_64';
+    }
+    default: {
+      throw new Error('Unsupported architecture, use an x64 or ARM64 host');
     }
   }
 }
