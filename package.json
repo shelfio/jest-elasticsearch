@@ -45,7 +45,7 @@
     "debug": "4.4.3",
     "download-tarball": "2.0.0",
     "execa": "8.0.1",
-    "js-yaml": "4.1.1",
+    "js-yaml": "4.3.1",
     "wait-for-localhost": "3.3.0"
   },
   "devDependencies": {
