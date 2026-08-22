@@ -1,4 +1,4 @@
-import {execSync} from 'child_process';
+import {execFileSync} from 'child_process';
 import {access, constants, readFileSync, writeFileSync} from 'fs';
 import {platform} from 'os';
 import {promisify} from 'util';
@@ -98,11 +98,16 @@ export async function startElasticsearch(options: StartElasticsearchOptions): Pr
 async function createIndices(esURL: string, indexes: ElasticsearchIndex[]): Promise<void> {
   await Promise.all(
     indexes.map(({name, body}) => {
-      const result = execSync(
-        `curl -X PUT "${esURL}${name}" -H 'Content-Type: application/json' -s -d '${JSON.stringify(
-          body
-        )}'`
-      );
+      const result = execFileSync('curl', [
+        '-X',
+        'PUT',
+        `${esURL}${name}`,
+        '-H',
+        'Content-Type: application/json',
+        '-s',
+        '-d',
+        JSON.stringify(body)
+      ]);
 
       const error = getESError(result);
 
@@ -130,7 +135,7 @@ function cleanupIndices(): void {
   const esURL = process.env.ES_URL;
 
   if (indexes) {
-    const result = execSync(`curl -XDELETE ${esURL}${indexes} -s`);
+    const result = execFileSync('curl', ['-X', 'DELETE', `${esURL}${indexes}`, '-s']);
 
     const error = getESError(result);
 
@@ -149,7 +154,7 @@ function killProcess(): void {
     });
   } catch {
     debug('Could not stop ES, killing all elasticsearch system wide');
-    execSync('pkill -f Elasticsearch');
+    execFileSync('pkill', ['-f', 'Elasticsearch']);
   }
 }
 
