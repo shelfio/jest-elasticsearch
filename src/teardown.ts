@@ -1,5 +1,5 @@
-import {stop} from '@shelf/elasticsearch-local';
+import {stopElasticsearch} from './elasticsearch';
 
 module.exports = function stopES() {
-  stop();
+  stopElasticsearch();
 };

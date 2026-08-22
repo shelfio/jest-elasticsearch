@@ -1,6 +1,6 @@
 # jest-elasticsearch
 
-> Jest preset for running tests with local ElasticSearch
+> Jest preset for running tests with local Elasticsearch
 >
 > [How to mock Elasticsearch with Jest?](https://medium.com/shelf-io-engineering/test-elasticsearch-with-jest-like-a-pro-42386713b899)
 
@@ -8,8 +8,8 @@
 
 ### 0. Install
 
-```
-$ yarn add @shelf/jest-elasticsearch --dev
+```sh
+pnpm add --save-dev --save-exact @shelf/jest-elasticsearch
 ```
 
 ### 1. Create `jest.config.js`
@@ -145,19 +145,21 @@ Java HotSpot(TM) 64-Bit Server VM (build 18.0.2.1+1-1, mixed mode, sharing)
 
 </details>
 
+The preset downloads, configures, starts, and stops the requested Elasticsearch version. No
+separate local Elasticsearch package is required.
+
 ## See Also
 
-- [elasticsearch-local](https://github.com/shelfio/elasticsearch-local)
 - [jest-dynamodb](https://github.com/shelfio/jest-dynamodb)
 - [jest-mongodb](https://github.com/shelfio/jest-mongodb)
 
 ## Publish
 
 ```sh
-$ git checkout master
-$ yarn version
-$ yarn publish
-$ git push origin master --tags
+git checkout master
+pnpm version
+pnpm publish
+git push origin master --tags
 ```
 
 ### Create and publish a GitHub release with your tag
